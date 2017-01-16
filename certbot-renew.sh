@@ -10,7 +10,7 @@ function test {
   cd $LE && ./certbot-auto renew --dry-run
 }
 
-OPTIONS="Test Renew"
+OPTIONS="Test Renew Quit"
 select opt in $OPTIONS; do
    if [ "$opt" = "Test" ]; then
 	  echo Running dry run...
@@ -18,11 +18,13 @@ select opt in $OPTIONS; do
 	  exit
 
   elif [ "$opt" = "Renew" ]; then
-	  echo Renewing
+	  echo Renewing...
 	  renew
-	  echo Renewal complete
+	  echo Renewal complete.
 	  exit
 	  					
+  elif [ "$opt" = "Quit" ]; then
+	  exit 
   else	
 	 clear
 	 echo bad option
