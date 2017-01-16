@@ -1,3 +1,4 @@
 #!/bin/bash
-cd /opt/letsencrypt && ./certbot-auto renew --dry-run
+LE=/opt/letsencrypt
+cd $LE && ./certbot-auto renew --dry-run
 
