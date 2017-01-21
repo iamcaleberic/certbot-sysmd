@@ -3,6 +3,5 @@ Description=Let's Encrypt renewal
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/certbot renew --quiet --agree-tos
+ExecStart=/opt/letsencrypt/certbot-auto renew --dry-run --quiet 
 
-ExecStartPost=/bin/systemctl reload httpd.service
