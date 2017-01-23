@@ -3,7 +3,7 @@
 LE=/opt/letsencrypt
 
 function renew {
-   cd $LE && ./certbot-auto renew 
+   cd $LE && ./certbot-auto renew && sudo service apache2 restart
 }
 
 function test {
