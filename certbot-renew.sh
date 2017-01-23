@@ -7,7 +7,7 @@ function renew {
 }
 
 function test {
-  cd $LE && ./certbot-auto renew --dry-run
+  cd $LE && ./certbot-auto renew --dry-run && sudo service apache2 restart
 }
 
 OPTIONS="Test Renew Quit"
