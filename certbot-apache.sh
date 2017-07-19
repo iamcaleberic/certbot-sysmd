@@ -4,7 +4,7 @@ function renew {
    sudo certbot renew --apache
    if [ $? -eq 0 ]
    then
-     echo "Certificate Renewal Complete :)"
+     echo "Certificate Renewal Successful:)"
    else
      echo "Error while attempting renewal :("
    fi
@@ -14,7 +14,7 @@ function test {
   sudo certbot renew --apache --dry-run && sudo service apache2 restart
   if [ $? -eq 0 ]
   then
-   echo "Dry Run Complete :)"
+    echo "Dry Run Successful :)"
   else
     echo "Error while running dry run :("
   fi

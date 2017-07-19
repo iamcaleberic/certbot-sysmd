@@ -4,7 +4,7 @@ function renew {
    sudo certbot renew --nginx
    if [ $? -eq 0 ]
    then
-     echo "Certificate Renewal Complete :)"
+     echo "Certificate Renewal Successful:)"
    else
      echo "Error while attempting renewal :("
    fi
@@ -14,7 +14,7 @@ function test {
   sudo certbot renew --nginx --dry-run && sudo service nginx restart
   if [ $? -eq 0 ]
   then
-   echo "Dry Run Complete :)"
+   echo "Dry Run Successful :)"
   else
     echo "Error while running dry run :("
   fi
