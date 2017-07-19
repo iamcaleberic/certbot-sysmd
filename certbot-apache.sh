@@ -1,7 +1,7 @@
 #bin/bash
 
 function renew {
-   certbot renew --apache
+   sudo certbot renew --apache
    if [ $? -eq 0 ]
    then
      echo "Certificate Renewal Complete :)"
@@ -11,7 +11,7 @@ function renew {
 }
 
 function test {
-  certbot renew --apache --dry-run && sudo service apache2 restart
+  sudo certbot renew --apache --dry-run && sudo service apache2 restart
   if [ $? -eq 0 ]
   then
    echo "Dry Run Complete :)"
