@@ -1,4 +1,13 @@
 #!/bin/bash
+function new {
+  sudo certbot --nginx
+  if [ $? -eq 0 ]
+  then
+    echo "Obtained Certificate Successfully :)"
+  else
+    echo "Error while attempting to Obtain a new Certificate :("
+  fi
+}
 
 function renew {
    sudo certbot renew --nginx
@@ -20,13 +29,19 @@ function test {
   fi
 }
 
-OPTIONS="Test Renew Quit"
+OPTIONS="Test New Renew Quit"
 select opt in $OPTIONS; do
    if [ "$opt" = "Test" ]; then
 	  echo Running dry run...
 	  test
     echo Dry Run complete.
 	  exit
+
+  elif [ "$opt" = "New" ]; then
+    echo Obtaining Certificate...
+    new
+    echo Certificate Obtaining complete.
+    exit
 
   elif [ "$opt" = "Renew" ]; then
 	  echo Renewing...
@@ -35,6 +50,7 @@ select opt in $OPTIONS; do
 	  exit
 
   elif [ "$opt" = "Quit" ]; then
+    echo Goodbye.
 	  exit
   else
 	 clear
