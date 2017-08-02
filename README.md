@@ -2,15 +2,15 @@
 
 ##### Renewal/Dry Run
 
-** make sure the files are executable run `chmod +x [filename]` if not
+** make sure the script files with `.sh` are executable run `chmod +x [filename]` if not
 
-- To renew/dry run a renewal of your Lets Encrypt certificate confirm what webserver you running on `nginx` or `apache`
+- To renew/dry run a renewal of your Lets Encrypt certificate confirm what web server you are running on either `nginx` or `apache`
 	- For Apache run:  
-		`./certbot-apache.sh` or
-		`bash certbot-apache.sh`
+			`./certbot-apache.sh` or
+			`bash certbot-apache.sh`
 	- For Nginx run :
-		`./certbot-nginx.sh` or
-		`bash certbot-nginx.sh`
+			`./certbot-nginx.sh` or
+			`bash certbot-nginx.sh`
 
 
 ##### Systemd Service/Timers
