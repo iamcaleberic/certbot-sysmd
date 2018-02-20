@@ -17,14 +17,14 @@
 	  ```
 			bash certbot-apache.sh
 		```
-	- For Nginx run :
-			```
-				./certbot-nginx.sh
-			```
-			or
-			```
-				bash certbot-nginx.sh
-			```
+	- For Nginx ru :
+		```
+			./certbot-nginx.sh
+		```
+		or
+		```
+			bash certbot-nginx.sh
+		```
 
 ##### Systemd Service/Timers
 
