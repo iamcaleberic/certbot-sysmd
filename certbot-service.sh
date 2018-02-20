@@ -6,7 +6,7 @@ function apache_alone {
   if [ $? -eq 0 ]
   then
      systemctl enable certbot.timer && systemctl start certbot.timer
-    echo "Timer enabled to renew Certificate after 2 months 3 weeks :)"
+    echo "Timer enabled to renew Certificate. Checks renewal every hour! :)"
   else
     echo "Service/Timer configuration failed :("
   fi
@@ -19,7 +19,7 @@ function nginx_alone {
   if [ $? -eq 0 ]
   then
      systemctl enable certbot.timer && systemctl start certbot.timer
-    echo "Timer enabled to renew Certificate after 2 months 3 weeks :)"
+    echo "Timer enabled to renew Certificate. Checks renewal every hour! :)"
   else
     echo "Service/Timer configuration failed :("
   fi
@@ -31,7 +31,7 @@ function apache {
   if [ $? -eq 0 ]
   then
      systemctl enable certbot.timer && systemctl start certbot.timer
-    echo "Timer enabled to renew Certificate after 2 months 3 weeks :)"
+    echo "Timer enabled to renew Certificate. Checks renewal every hour! :)"
   else
     echo "Service/Timer configuration failed :("
   fi
@@ -44,7 +44,7 @@ function nginx {
   if [ $? -eq 0 ]
   then
      systemctl enable certbot.timer && systemctl start certbot.timer
-    echo "Timer enabled to renew Certificate after 2 months 3 weeks :)"
+    echo "Timer enabled to renew Certificate. Checks renewal every hour! :)"
   else
     echo "Service/Timer configuration failed :("
   fi
