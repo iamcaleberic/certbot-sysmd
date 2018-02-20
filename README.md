@@ -1,6 +1,6 @@
 ### Cerbot services & timers & scripts
 
-##### Renewal/Dry Run/Installation of letsencrypt certificates
+##### Renewal and/or Dry Run of letsencrypt certificates
 
 **make sure the `script` files with `.sh` are executable**. If not, run:
 
@@ -17,7 +17,7 @@
 	  ```
 			bash certbot-apache.sh
 		```
-	- For Nginx ru :
+	- For Nginx run:
 		```
 			./certbot-nginx.sh
 		```
@@ -44,3 +44,8 @@
 	```
 		sudo systemctl list-timers
 	```
+
+### valid links
+
+- [Cerbot](https://certbot.eff.org/)
+- [letsencrypt](https://letsencrypt.org/)
