@@ -45,7 +45,13 @@
 		sudo systemctl list-timers
 	```
 
-### valid links
+- Should give someting of the sort
+```
+NEXT                         LEFT          LAST                         PASSED       UNIT                         ACTIVATES
+Tue 2018-02-20 01:00:00 UTC  31min left    Tue 2018-02-20 00:00:05 UTC  28min ago    certbot.timer                certbot.service
+```
+
+### Valid links
 
 - [Cerbot](https://certbot.eff.org/)
 - [letsencrypt](https://letsencrypt.org/)
