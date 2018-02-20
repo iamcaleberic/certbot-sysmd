@@ -1,8 +1,8 @@
 [Unit]
-Description=Three month renewal of Let's Encrypt's certificates
+Description=Three month renewal of Let's Encrypt's certificates/Checks hourly for renewal
 
 [Timer]
-OnCalendar= 2m 3w
+OnCalendar= *-*-* *:00:00
 Persistent=true
 
 [Install]
