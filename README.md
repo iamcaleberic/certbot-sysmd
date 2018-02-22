@@ -28,9 +28,10 @@
 
 ##### Systemd Service/Timers
 
-- The `.timer` the timer runs `hourly` to check if the certificate is due for renewal
+- The `.timer` the timer runs `twice daily
+` to check if the certificate is due for renewal
 
-- The timers are currently set to check for renewal every hour can configure this to your preference by editing
+- The timers are currently set to check for renewal twice daily can configure this to your preference by editing
 	```
 		certbot.timer
 	```
