@@ -2,6 +2,8 @@
 
 ##### Renewal and/or Dry Run of letsencrypt certificates
 
+**Run with elevated priviledges where necessary**
+
 **make sure the `script` files with `.sh` are executable**. If not, run:
 
 ```
