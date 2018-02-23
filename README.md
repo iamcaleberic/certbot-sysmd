@@ -37,7 +37,7 @@
 	```
 - To `install` and `enable` the systemd timers and services run the following and follow the prompts:(**I intentinally refused to run scripts as priviledged by default to make sure guys are sure about what they are doing**)
 	```
-		./certbot-service.sh
+		./certbot-systemd.sh
 	```
 - The script will copy a `.service` file and a correspoding `.timer` file to systemd path (where all your unit files are located). [Check the Arch Wiki on systemd](https://wiki.archlinux.org/index.php/Systemd)
 
