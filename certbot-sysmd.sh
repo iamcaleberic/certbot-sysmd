@@ -1,8 +1,8 @@
 #!/bin/bash
 
 function apache_alone {
-   cp certbot-apache-standalone.service /etc/systemd/system/certbot.service
-   cp certbot.timer /etc/systemd/system/certbot.timer
+   cp lib/certbot-apache-standalone.service /etc/systemd/system/certbot.service
+   cp lib/certbot.timer /etc/systemd/system/certbot.timer
   if [ $? -eq 0 ]
   then
      systemctl enable certbot.timer && systemctl start certbot.timer
@@ -14,8 +14,8 @@ function apache_alone {
 }
 
 function nginx_alone {
-   cp certbot-nginx-standalone.service /etc/systemd/system/certbot.service
-   cp certbot.timer /etc/systemd/system/certbot.timer
+   cp lib/certbot-nginx-standalone.service /etc/systemd/system/certbot.service
+   cp lib/certbot.timer /etc/systemd/system/certbot.timer
   if [ $? -eq 0 ]
   then
      systemctl enable certbot.timer && systemctl start certbot.timer
@@ -26,8 +26,8 @@ function nginx_alone {
 }
 
 function apache {
-   cp certbot-apache.service /etc/systemd/system/certbot.service
-   cp certbot.timer /etc/systemd/system/certbot.timer
+   cp lib/certbot-apache.service /etc/systemd/system/certbot.service
+   cp lib/certbot.timer /etc/systemd/system/certbot.timer
   if [ $? -eq 0 ]
   then
      systemctl enable certbot.timer && systemctl start certbot.timer
@@ -39,8 +39,8 @@ function apache {
 }
 
 function nginx {
-   cp certbot-nginx.service /etc/systemd/system/certbot.service
-   cp certbot.timer /etc/systemd/system/certbot.timer
+   cp lib/certbot-nginx.service /etc/systemd/system/certbot.service
+   cp lib/certbot.timer /etc/systemd/system/certbot.timer
   if [ $? -eq 0 ]
   then
      systemctl enable certbot.timer && systemctl start certbot.timer
