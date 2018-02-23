@@ -1,0 +1,6 @@
+[Unit]
+Description=Let's Encrypt renewal
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/certbot renew --post-hook "/usr/bin/systemctl restart nginx.service" --agree-tos
