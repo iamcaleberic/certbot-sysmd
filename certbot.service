@@ -1,7 +1,0 @@
-[Unit]
-Description=Let's Encrypt renewal
-
-[Service]
-Type=oneshot
-ExecStart=/opt/letsencrypt/certbot-auto renew --dry-run --quiet 
-
