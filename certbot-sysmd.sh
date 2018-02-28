@@ -7,6 +7,7 @@ function apache_alone {
     if [[ -e "$file"  ]]; then
       echo Configuration files exist. You all good.
     else
+      echo "Copying apache service file..."
       cp lib/certbot.timer /etc/systemd/system/certbot.timer
       cp lib/certbot-apache-standalone.service /etc/systemd/system/certbot.service
       systemctl enable certbot.timer && systemctl start certbot.timer
@@ -24,6 +25,7 @@ function nginx_alone {
     if [[ -e "$file"  ]]; then
       echo Configuration files exist. You all good.
     else
+     echo "Copying nginx service file...  "
      cp lib/certbot.timer /etc/systemd/system/certbot.timer
      cp lib/certbot-nginx-standalone.service /etc/systemd/system/certbot.service
      systemctl enable certbot.timer && systemctl start certbot.timer
@@ -40,6 +42,7 @@ function apache {
     if [[ -e "$file"  ]]; then
       echo Configuration files exist. You all good.
     else
+     echo "Copying apache service file..."
      cp lib/certbot-apache.service /etc/systemd/system/certbot.service
      cp lib/certbot.timer /etc/systemd/system/certbot.timer
      systemctl enable certbot.timer && systemctl start certbot.timer
@@ -57,6 +60,7 @@ function nginx {
     if [[ -e "$file"  ]]; then
       echo Configuration files exist. You all good.
     else
+      echo "Copying nginx service file..."
       cp lib/certbot-nginx.service /etc/systemd/system/certbot.service
       cp lib/certbot.timer /etc/systemd/system/certbot.timer
       systemctl enable certbot.timer && systemctl start certbot.timer
@@ -72,25 +76,21 @@ function nginx {
 OPTIONS="Apache Apache-standalone Nginx-standalone Nginx Quit"
 select opt in $OPTIONS; do
     if [ "$opt" = "Apache" ]; then
-     echo Copying apache service file...
      apache
      echo Apache Timer/Service configuration complete.
      exit
 
    elif [ "$opt" = "Nginx" ]; then
-     echo Copying nginx service file...
      nginx
      echo Nginx Timer/Service configuration complete.
      exit
 
    elif [ "$opt" = "Apache-standalone" ]; then
-    echo Copying apache service file...
     apache_alone
     echo Apache Timer/Service configuration complete.
     exit
 
   elif [ "$opt" = "Nginx-standalone" ]; then
-    echo Copying nginx service file...
     nginx_alone
     echo Nginx Timer/Service configuration complete.
     exit
