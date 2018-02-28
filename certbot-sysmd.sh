@@ -1,12 +1,17 @@
 #!/bin/bash
+file="/etc/systemd/system/certbot.service"
 
 function apache_alone {
-   cp lib/certbot-apache-standalone.service /etc/systemd/system/certbot.service
-   cp lib/certbot.timer /etc/systemd/system/certbot.timer
   if [ $? -eq 0 ]
   then
-     systemctl enable certbot.timer && systemctl start certbot.timer
-    echo "Timer enabled to renew Certificate. Checks renewal twice daily! :)"
+    if [[ -e "$file"  ]]; then
+      echo Configuration files exist. You all good.
+    else
+      cp lib/certbot.timer /etc/systemd/system/certbot.timer
+      cp lib/certbot-apache-standalone.service /etc/systemd/system/certbot.service
+      systemctl enable certbot.timer && systemctl start certbot.timer
+      echo "Timer enabled to renew Certificate. Checks renewal twice daily! :)"
+    fi
   else
     echo "Service/Timer configuration failed :("
   fi
@@ -14,24 +19,32 @@ function apache_alone {
 }
 
 function nginx_alone {
-   cp lib/certbot-nginx-standalone.service /etc/systemd/system/certbot.service
-   cp lib/certbot.timer /etc/systemd/system/certbot.timer
   if [ $? -eq 0 ]
   then
+    if [[ -e "$file"  ]]; then
+      echo Configuration files exist. You all good.
+    else
+     cp lib/certbot.timer /etc/systemd/system/certbot.timer
+     cp lib/certbot-nginx-standalone.service /etc/systemd/system/certbot.service
      systemctl enable certbot.timer && systemctl start certbot.timer
-    echo "Timer enabled to renew Certificate. Checks renewal twice daily! :)"
+     echo "Timer enabled to renew Certificate. Checks renewal twice daily! :)"
+    fi
   else
     echo "Service/Timer configuration failed :("
   fi
 }
 
 function apache {
-   cp lib/certbot-apache.service /etc/systemd/system/certbot.service
-   cp lib/certbot.timer /etc/systemd/system/certbot.timer
   if [ $? -eq 0 ]
   then
+    if [[ -e "$file"  ]]; then
+      echo Configuration files exist. You all good.
+    else
+     cp lib/certbot-apache.service /etc/systemd/system/certbot.service
+     cp lib/certbot.timer /etc/systemd/system/certbot.timer
      systemctl enable certbot.timer && systemctl start certbot.timer
-    echo "Timer enabled to renew Certificate. Checks renewal twice daily! :)"
+     echo "Timer enabled to renew Certificate. Checks renewal twice daily! :)"
+    fi
   else
     echo "Service/Timer configuration failed :("
   fi
@@ -39,56 +52,54 @@ function apache {
 }
 
 function nginx {
-   cp lib/certbot-nginx.service /etc/systemd/system/certbot.service
-   cp lib/certbot.timer /etc/systemd/system/certbot.timer
   if [ $? -eq 0 ]
   then
-     systemctl enable certbot.timer && systemctl start certbot.timer
-    echo "Timer enabled to renew Certificate. Checks renewal twice daily! :)"
+    if [[ -e "$file"  ]]; then
+      echo Configuration files exist. You all good.
+    else
+      cp lib/certbot-nginx.service /etc/systemd/system/certbot.service
+      cp lib/certbot.timer /etc/systemd/system/certbot.timer
+      systemctl enable certbot.timer && systemctl start certbot.timer
+      echo "Timer enabled to renew Certificate. Checks renewal twice daily! :)"
+    fi
   else
     echo "Service/Timer configuration failed :("
   fi
 }
 
-file="/etc/systemd/system/certbot.service"
-if [ -e "$file" ];
-  then
-    echo Configuration files exist. You all good.
-else
 
-    OPTIONS="Apache Apache-standalone Nginx-standalone Nginx Quit"
 
-    select opt in $OPTIONS; do
-        if [ "$opt" = "Apache" ]; then
-         echo Copying apache service file...
-         apache
-         echo Apache Timer/Service configuration complete.
-         exit
+OPTIONS="Apache Apache-standalone Nginx-standalone Nginx Quit"
+select opt in $OPTIONS; do
+    if [ "$opt" = "Apache" ]; then
+     echo Copying apache service file...
+     apache
+     echo Apache Timer/Service configuration complete.
+     exit
 
-       elif [ "$opt" = "Nginx" ]; then
-         echo Copying nginx service file...
-         nginx
-         echo Nginx Timer/Service configuration complete.
-         exit
+   elif [ "$opt" = "Nginx" ]; then
+     echo Copying nginx service file...
+     nginx
+     echo Nginx Timer/Service configuration complete.
+     exit
 
-       elif [ "$opt" = "Apache-standalone" ]; then
-        echo Copying apache service file...
-        apache_alone
-        echo Apache Timer/Service configuration complete.
-        exit
+   elif [ "$opt" = "Apache-standalone" ]; then
+    echo Copying apache service file...
+    apache_alone
+    echo Apache Timer/Service configuration complete.
+    exit
 
-      elif [ "$opt" = "Nginx-standalone" ]; then
-        echo Copying nginx service file...
-        nginx_alone
-        echo Nginx Timer/Service configuration complete.
-        exit
+  elif [ "$opt" = "Nginx-standalone" ]; then
+    echo Copying nginx service file...
+    nginx_alone
+    echo Nginx Timer/Service configuration complete.
+    exit
 
-       elif [ "$opt" = "Quit" ]; then
-         echo Goodbye.
-         exit
-       else
-        clear
-        echo Bad option
-       fi
-    done
-fi
+   elif [ "$opt" = "Quit" ]; then
+     echo Goodbye.
+     exit
+   else
+    clear
+    echo Bad option
+   fi
+done
