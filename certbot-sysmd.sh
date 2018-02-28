@@ -72,7 +72,7 @@ function nginx {
 }
 
 
-
+PS3="Please select your current webserver configuration:"
 OPTIONS="Apache Apache-standalone Nginx-standalone Nginx Quit"
 select opt in $OPTIONS; do
     if [ "$opt" = "Apache" ]; then
